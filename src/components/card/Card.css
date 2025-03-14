@@ -1,0 +1,18 @@
+.card {
+  border: 1px solid #14151c;
+  width: 19em;
+  height: 8em;
+  border-radius: 20px;
+}
+
+.number,
+.what-counted {
+  font-size: 20px;
+  position: relative;
+  right: 40px;
+}
+
+.number {
+  font-weight: 900;
+  font-size: 40px;
+}

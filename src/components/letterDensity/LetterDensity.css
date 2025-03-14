@@ -1,0 +1,23 @@
+.letter-density-text {
+  color: #fff;
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 20px;
+  position: relative;
+  float: left;
+  left: 40px;
+}
+
+.letter-density {
+  padding-bottom: 10px;
+  padding-bottom: 43px;
+}
+
+.letters {
+  list-style-type: none;
+  position: relative;
+  top: 75px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
