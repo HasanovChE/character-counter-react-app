@@ -40,7 +40,7 @@ setWordCount(words ? words.length : 0);
     return (
         <div className="app">
             <Header/>
-            <h2 className="text-black">Analyze your text <br /> in real-time</h2>
+            <h2 className="text-black dark:text-white">Analyze your text <br /> in real-time</h2>
             <UserInput onTextChange={updateCounts} />
             <CardList charCount={charCount} wordCount={wordCount} lineCount={lineCount} />
             <LetterDensity letterData={letterData} />
