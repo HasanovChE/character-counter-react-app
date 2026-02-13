@@ -21,14 +21,15 @@
   justify-content: center;
 }
 
-.change-bc-to-light, .change-bc-to-dark {
+.change-bc-to-light,
+.change-bc-to-dark {
   width: 20px;
   height: 20px;
   position: absolute;
   right: 10px;
 }
 
-.change-bc-to-light{
+.change-bc-to-light {
   margin-right: 30px;
 }
 
