@@ -1,117 +1,137 @@
 .user-input-container {
-  border-radius: 8px;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .user-input {
   width: 100%;
-  padding: 10px 10px 75px 10px;
-  border: 1px solid;
-  border-radius: 6px;
-  font-size: 16px;
-  margin-bottom: 16px;
-  outline: none;
-  transition: border-color 0.2s ease;
-  resize: vertical;
+  height: 150px;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+  font-family: inherit;
+  resize: none;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1.6;
 }
 
 .user-input:focus {
-  border-color: #6c71c4;
-  box-shadow: 0 0 0 2px rgba(108, 113, 196, 0.2);
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-.checkboxes {
+.user-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.controls {
   display: flex;
-  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.checkboxes input[type="checkbox"] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #3d3d4f;
-  border-radius: 4px;
-  background-color: #2a2a3a;
-  margin-right: 8px;
-  position: relative;
-  vertical-align: middle;
+.options {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.limit-option-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
-}
-
-.checkboxes input[type="checkbox"]:checked {
-  background-color: #6c71c4;
-  border-color: #6c71c4;
-}
-
-.checkboxes input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  top: 6px;
-  left: 8px;
-  color: white;
-  font-size: 14px;
-  transform: translate(-50%, -50%);
-}
-
-.checkboxes label {
-  font-size: 14px;
-  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
   user-select: none;
 }
 
-.reading-time-text {
-  color: #fff;
-  font-size: small;
-  position: absolute;
-  right: 250px;
+.checkbox-wrapper input {
+  display: none;
 }
 
-.warning-text {
-  color: red;
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
   position: relative;
-  right: 30px;
+  transition: all 0.2s ease;
+  background: var(--bg-secondary);
+}
+
+.checkbox-wrapper input:checked+.checkbox-custom {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox-wrapper input:checked+.checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.limit-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-secondary);
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
 }
 
 .character-limit-input {
-  width: 100px;
-  border-radius: 50px;
-  padding: 5px;
-  color: #fff;
-  background-color: #2a2a3a;
+  width: 50px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0;
+  text-align: center;
 }
 
-@media screen and (max-width: 768px) {
-  .user-input-container {
-    padding: 15px;
-  }
-
-  .checkboxes {
-    gap: 15px;
-  }
+.character-limit-input:focus {
+  outline: none;
 }
 
-@media screen and (max-width: 480px) {
-  .user-input-container {
-    padding: 10px;
-  }
+.limit-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
 
-  .checkboxes {
+.warning-text {
+  color: #ef4444;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: -0.5rem;
+}
+
+@media (max-width: 640px) {
+  .controls {
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .checkbox-container {
-    width: 100%;
-  }
-
-  .character-limit-input {
-    width: 100%;
-    margin-top: 5px;
-  }
-
-  .user-input {
-    font-size: 14px;
+    align-items: flex-start;
   }
 }

@@ -15,8 +15,8 @@ function App() {
         setCharCount(processedText.length);
         setLineCount(text ? text.split("\n").length : 0);
 
- const words = text.match(/\b[a-zA-Z][\w'-]*\b/g);
-setWordCount(words ? words.length : 0);
+        const words = text.match(/\b[a-zA-Z][\w'-]*\b/g);
+        setWordCount(words ? words.length : 0);
 
         // Count letter frequencies
         const letterCounts = {};
@@ -39,11 +39,15 @@ setWordCount(words ? words.length : 0);
 
     return (
         <div className="app">
-            <Header/>
-            <h2 className="text-black dark:text-white">Analyze your text <br /> in real-time</h2>
-            <UserInput onTextChange={updateCounts} />
-            <CardList charCount={charCount} wordCount={wordCount} lineCount={lineCount} />
-            <LetterDensity letterData={letterData} />
+            <Header />
+            <main className="content">
+                <h2 className="title">
+                    Analyze your text <span className="accent-text">in real-time</span>
+                </h2>
+                <UserInput onTextChange={updateCounts} />
+                <CardList charCount={charCount} wordCount={wordCount} lineCount={lineCount} />
+                <LetterDensity letterData={letterData} />
+            </main>
         </div>
     );
 }

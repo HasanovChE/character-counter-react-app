@@ -1,18 +1,40 @@
-.card {
-  border: 1px solid #14151c;
-  width: 19em;
-  height: 8em;
-  border-radius: 20px;
+.stat-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.number,
-.what-counted {
-  font-size: 20px;
-  position: relative;
-  right: 40px;
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgb(0 0 0 / 0.15);
 }
 
-.number {
-  font-weight: 900;
-  font-size: 40px;
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 640px) {
+  .stat-card {
+    min-width: 100%;
+  }
 }

@@ -1,23 +1,42 @@
-.letter-density-text {
-  color: #fff;
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 20px;
-  position: relative;
-  float: left;
-  left: 40px;
-}
-
-.letter-density {
-  padding-bottom: 10px;
-  padding-bottom: 43px;
-}
-
-.letters {
-  list-style-type: none;
-  position: relative;
-  top: 75px;
+.letter-density-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.5rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1rem 1.25rem;
+  box-shadow: var(--card-shadow);
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.density-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .density-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.more-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .letter-density-container {
+    padding: 1.25rem;
+  }
 }

@@ -1,69 +1,58 @@
 .header {
   display: flex;
-  flex-direction: row;
-  color: #fff;
-  width: 70%;
-  position: absolute;
-  top: 0px;
-  left: 4em;
-  padding: 30px 10px;
-  flex-shrink: initial;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .site-icon {
-  height: 35px;
-  width: auto;
-}
-
-.change-bc-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.change-bc-to-light,
-.change-bc-to-dark {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 10px;
-}
-
-.change-bc-to-light {
-  margin-right: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 .site-name {
   font-size: 1.5rem;
-  position: relative;
-  left: 10px;
-  text-decoration: none;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    padding: 15px;
-  }
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
 
+.theme-toggle:hover {
+  transform: scale(1.05);
+  background-color: var(--border);
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 640px) {
   .site-name {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
   .site-icon {
-    height: 25px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    padding: 10px;
-  }
-
-  .site-name {
-    font-size: 1rem;
-  }
-
-  .site-icon {
-    height: 20px;
+    width: 32px;
+    height: 32px;
   }
 }

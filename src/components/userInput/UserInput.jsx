@@ -10,7 +10,7 @@ function UserInput({ onTextChange }) {
   const handleChange = (e) => {
     let newText = e.target.value;
 
-    if (!characterLimit || newText.length <= characterLimit) {
+    if (!isLimitEnabled || !characterLimit || newText.length <= characterLimit) {
       setText(newText);
       onTextChange(newText, excludeSpaces);
     }
@@ -22,59 +22,63 @@ function UserInput({ onTextChange }) {
     onTextChange(text, newExcludeSpaces);
   };
 
-  const handleLimitToggle = () => {
-    setIsLimitEnabled(!isLimitEnabled);
-    if (!isLimitEnabled) {
-      setCharacterLimit(1000); 
-    } else {
-      setCharacterLimit(null); 
-    }
-  };
 
   return (
     <div className="user-input-container">
       <textarea
-        type="text"
-        className="user-input bg-black text-white dark:bg-white dark:text-black"
+        className="user-input"
         value={text}
         onChange={handleChange}
-        placeholder="Type here..."
+        placeholder="Paste your text here..."
+        spellCheck="false"
       ></textarea>
 
-      <div className="checkboxes">
-        <div className="checkbox-container">
-          <input
-            type="checkbox"
-            id="exclude-spaces"
-            checked={excludeSpaces}
-            onChange={handleExcludeSpacesToggle}
-          />
-          <label htmlFor="exclude-spaces" className='text-black dark:text-white'>Exclude Spaces</label>
-        </div>
+      <div className="controls">
+        <div className="options">
+          <label className="checkbox-wrapper">
+            <input
+              type="checkbox"
+              checked={excludeSpaces}
+              onChange={handleExcludeSpacesToggle}
+            />
+            <span className="checkbox-custom"></span>
+            Exclude Spaces
+          </label>
 
-        <div className="checkbox-container">
-          <input
-            type="checkbox"
-            id="character-limit"
-            checked={isLimitEnabled}
-            onChange={handleLimitToggle}
-          />
-          <label htmlFor="character-limit" className='text-black dark:text-white'>Set Character Limit</label>
-        </div>
+          <div className="limit-option-group">
+            <label className="checkbox-wrapper">
+              <input
+                type="checkbox"
+                checked={isLimitEnabled}
+                onChange={() => {
+                  const nextState = !isLimitEnabled;
+                  setIsLimitEnabled(nextState);
+                  if (nextState) setCharacterLimit(1000);
+                  else setCharacterLimit(null);
+                }}
+              />
+              <span className="checkbox-custom"></span>
+              Set Character Limit
+            </label>
 
-        {isLimitEnabled && (
-          <input
-            type="number"
-            className="character-limit-input"
-            value={characterLimit || ''}
-            onChange={(e) => setCharacterLimit(Number(e.target.value))}
-            min="1"
-          />
-        )}
+            {isLimitEnabled && (
+              <div className="limit-input-wrapper">
+                <input
+                  type="number"
+                  className="character-limit-input"
+                  value={characterLimit || ''}
+                  onChange={(e) => setCharacterLimit(Number(e.target.value))}
+                  min="1"
+                />
+                <span className="limit-label">chars</span>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      {isLimitEnabled && text.length >= characterLimit && (
-        <p className="warning-text">Character limit reached!</p>
+      {isLimitEnabled && characterLimit && text.length >= characterLimit && (
+        <p className="warning-text">You've reached the character limit!</p>
       )}
     </div>
   );

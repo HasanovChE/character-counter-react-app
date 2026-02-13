@@ -1,11 +1,10 @@
 import './Card.css'
-function Card ({number, whatCounted, bgColor}){
+
+function Card({ number, whatCounted, bgColor }) {
     return (
-        <div className="card" style={{backgroundColor:bgColor}}>
-            <li>
-            <p className="number text-black dark:text-white">{number}</p>
-            <p className="what-counted text-black dark:text-white">{whatCounted}</p>
-            </li>
+        <div className="stat-card" style={{ '--accent-color': bgColor }}>
+            <div className="stat-number">{number}</div>
+            <div className="stat-label">{whatCounted}</div>
         </div>
     )
 }
